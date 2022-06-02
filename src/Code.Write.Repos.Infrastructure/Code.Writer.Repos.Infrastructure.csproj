@@ -9,10 +9,15 @@
   <ItemGroup>
     <PackageReference Include="Flurl" Version="3.0.6" />
     <PackageReference Include="Flurl.Http" Version="3.2.4" />
+    <PackageReference Include="MediatR" Version="10.0.1" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
     <PackageReference Include="Microsoft.Extensions.Options" Version="6.0.0" />
+    <PackageReference Include="MongoDB.Driver" Version="2.15.1" />
+    <PackageReference Include="ServiceStack.Core" Version="6.1.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Code.Write.Repos.Application\Code.Writer.Repos.Application.csproj" />
     <ProjectReference Include="..\Code.Write.Repos.Domain\Code.Writer.Repos.Domain.csproj" />
   </ItemGroup>
 

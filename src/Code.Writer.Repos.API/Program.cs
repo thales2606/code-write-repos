@@ -1,19 +1,17 @@
-using Code.Writer.Repos.Domain.Contracts.Infrastructure.GitHub;
-using Code.Writer.Repos.Domain.Settings;
-using Code.Writer.Repos.Infrastructure.Github;
+using Code.Writer.Repos.Infrastructure.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers(options => 
+builder.Services.AddControllers(options =>
     options.SuppressImplicitRequiredAttributeForNonNullableReferenceTypes = true);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Configuration.AddJsonFile("appsettings.json", false, true);
 
-builder.Services.AddScoped<IGithubService, GithubService>();
-builder.Services.Configure<GithubSettings>(builder.Configuration.GetSection("GithubSettings"));
+builder.Services.RegisterServices(builder.Configuration);
 
 var app = builder.Build();
 

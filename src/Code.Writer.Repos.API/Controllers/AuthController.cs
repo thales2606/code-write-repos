@@ -6,7 +6,7 @@ using Microsoft.Extensions.Options;
 
 namespace Code.Writer.Repos.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/auth")]
     [ApiController]
     public class AuthController : ControllerBase
     {
@@ -15,13 +15,13 @@ namespace Code.Writer.Repos.API.Controllers
         {
             _githubService = githubService;
         }
-        [HttpGet("githubAuthRedirect")]
+        [HttpGet("github-auth-redirect")]
         public IActionResult GithubAuthRedirect()
         {
             var urlRedirect = _githubService.GetAuthorizeUrl();
             return Redirect(urlRedirect);
         }
-        [HttpGet("githubTokenResult")]
+        [HttpGet("github-token-result")]
         public async Task<IActionResult> GithubTokenResult([FromQuery] RequestTokenByAccessCode request)
         {
            var result = await _githubService.GetAccessToken(request);
